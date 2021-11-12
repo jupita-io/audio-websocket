@@ -4,7 +4,7 @@ Using the Jupita Twilio SDK, you can enable real time audio analytics with your 
 
 To get started you will need;
 
-- [The Jupita Twilio SDK](https://jupita.io/backend/media-streams/node)
+- [The Jupita Twilio SDK](https://jupita.io/backend/audio-sdk/websocket)
 
 - [Your Twilio account](https://www.twilio.com/try-twilio)
 
@@ -102,7 +102,7 @@ Additional Google Cloud Platform links –
 
 ## Deploying the Jupita Twilio SDK
 
-1. Download the Jupita Twilio SDK [here](https://jupita.io/backend/media-streams/node)
+1. Download the Jupita Twilio SDK [here](https://jupita.io/backend/audio-sdk/websocket)
 
 1. Place the folder on your local machine and open terminal
 
