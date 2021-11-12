@@ -1,35 +1,23 @@
 # Jupita Websocket SDK
 
-Using the Jupita Websocket SDK, you can enable real time audio analytics with your Twilio account. This guide will help you set up the required accounts, implement the provided Jupita Twilio SDK, as well as testing, maintenance & troubleshooting. Note that any speech-to-text API will work, however Google Speech-to-Text has been used for this SDK. 
+Using the Jupita Websocket SDK you can enable real time audio analytics with any audio received via a Websocket packet. This guide will help you set up the required accounts, implement the provided Jupita Websocket SDK, as well as testing, maintenance & troubleshooting. Note that any speech-to-text API will work, however Google Speech-to-Text has been used for this SDK. 
 
 To get started you will need;
 
 - [The Jupita Websocket SDK](https://jupita.io/backend/audio-sdk/websocket)
-
-- [Your Twilio account](https://www.twilio.com/try-twilio)
-
-- [Twilio’s CLI](https://www.twilio.com/docs/twilio-cli/quickstart)
 
 - [A free Google Cloud Platform account](https://cloud.google.com/)
 
 - [Ngrok](https://ngrok.com/)
 
 ## Getting started
-The Jupita Twilio SDK captures raw audio streams which can be forked via Google Speech-to-Text to Jupita. When the transcriptions are received Jupita will apply timestamps to create the utterances in the order in which they occurred. There is a timestamp in each payload that increments from the time the stream starts. 
+The Jupita Websocket SDK captures raw audio streams which can be forked via Google Speech-to-Text to Jupita. When the transcriptions are received Jupita will apply timestamps to create the utterances in the order in which they occurred. There is a timestamp in each payload that increments from the time the stream starts. 
 
-Multiple streams can be independently transcribed and fed into Jupita via .JSON format. All of this happens in real time during the audio. The Jupita Twilio SDK can stream audio to and from any call made either to a phone, SIP, or any Twilio Voice SDK product, however you can send any audio to the Jupita Twilio SDK with any websocket endpoint that can accept and send base64 encoded audio.
+Multiple streams can be independently transcribed and fed to Jupita via .JSON format. All of this happens in real time during the audio. The Jupita Websocket SDK can stream audio to and from any call made either to a phone, SIP, or any websocket endpoint that can accept and send base64 encoded audio.
 
-The Twilio [TwiML](https://www.twilio.com/docs/glossary/what-is-twilio-markup-language-twiml) <stream> command streams audio to any WebSocket server. Your Twilio account creates and manages a virtual phone number. The new Stream command takes the audio and sends it to a configured WebSocket which runs on a simple App Engine flexible environment. From there, the audio is sent to Google Speech-to-Text, transcribed and sent to Jupita in real-time. The Jupita Twilio SDK handles this entire process end-to-end.
+Simply send your stream to the configured WebSocket in the SDK which runs on a simple App Engine flexible environment. From there, the audio is sent to Google Speech-to-Text, transcribed and sent to Jupita in real-time. The Jupita Websocket SDK handles this entire process end-to-end.
 
-## Configuring your phone number
-You’ll need a [Twilio phone number](https://support.twilio.com/hc/en-us/articles/223135247-How-to-Search-for-and-Buy-a-Twilio-Phone-Number-from-Console). You’ll need to configure your phone number to respond with TwiML (Twilio Markup Language). It’s a tag-based language much like HTML, which will pass off control via a webhook based on your TwiML settings.
-
-Next, navigate to your list phone numbers and choose your new number. On the number settings screen, scroll down to the Voice section. There is a field labelled “A Call Comes In”. Here, choose TwiML Bin from the drop down and select the plus button next to the field to create a new TwiML Bin.
-
-## Creating a TwiML Bin
-TwiML Bins are a serverless solution that can seamlessly host TwiML instructions. Using a TwiML Bin prevents you from needing to set up a webhook handler in your own web-hosted environment.
-
-Give your TwiML Bin a friendly Name that you can remember later. In the Body field, enter the following code, replacing the URL attribute of the <Stream> tag and the phone number contained in the body of the <Dial> tag.
+Replace the URL attribute of the <Stream> tag and the phone number contained in the body of the <Dial> tag.
 
 ```
 <?xml version="1.0" encoding="UTF-8"?>
@@ -43,15 +31,7 @@ Give your TwiML Bin a friendly Name that you can remember later. In the Body fie
 
 The <Stream> tag starts the audio stream asynchronously and then control moves onto the <Dial> verb. <Dial> will call that number. The audio stream will end when the call is completed.
 
-Save your TwiML Bin and make sure that you see your friendly name in the “A Call Comes In“ drop down next to TwiML Bin. Make sure to Save your phone number.
-
-Additional Twilio references;
-
-- [TwiML](https://www.twilio.com/docs/voice/twiml)
-
-- [Consume a real-time Media Stream](https://www.twilio.com/docs/voice/tutorials/consume-real-time-media-stream-using-websockets-python-and-flask)
-
-You will also need to setup your .env (environment variable) file – Note that this file must be placed inside your Node.js application folder. More info on this can be found [here](https://www.twilio.com/blog/2017/01/how-to-set-environment-variables.html).
+You will also need to setup your .env (environment variable) file – Note that this file must be placed inside your Node.js application folder.
 
 ## Getting started with Google Cloud Platform
 This setup can either be done in an existing Google Cloud project or a new project. To set up a new project, follow the instructions [here](https://cloud.google.com/resource-manager/docs/creating-managing-projects).
@@ -65,10 +45,10 @@ Create a service account for your App Engine flexible environment to utilize whe
 `Gcloud compute firewall-rules create default-allow-websockets-8080 --allow tcp:8080 --target-tags WebSocket --description "Allow WebSocket traffic on port 8080"`
 
 ## App spot
-You will also require a URL from your selected hosting platform - such as GCP’s ‘App engine’ and apply that URL into your post request in the Jupita Twilio SDK file ‘server.js’. This template is already setup in the Jupita Node.js audio SDK. 
+You will also require a URL from your selected hosting platform - such as GCP’s ‘App engine’ and apply that URL into your post request in the Jupita Websocket SDK file ‘server.js’. This template is already setup in the Jupita Websocket SDK. 
 
 ## App Engine flexible environment setup
-Take the service account JSON key you downloaded earlier, rename it to ‘google_creds.json’ and replace the same named file in the Jupita Node.js audio SDK with this file. 
+Take the service account JSON key you downloaded earlier, rename it to ‘google_creds.json’ and replace the same named file in the Jupita Websocket SDK with this file. 
 
 Your ‘app.yaml’ file will look similar to the following (you will need to configure the variables of your app engine to suit your projects requirements);
 
@@ -100,9 +80,9 @@ Additional Google Cloud Platform links –
 
 - [References](https://cloud.google.com/speech-to-text/docs/reference/rpc/google.cloud.speech.v1/)
 
-## Deploying the Jupita Twilio SDK
+## Deploying the Jupita Websocket SDK
 
-1. Download the Jupita Twilio SDK [here](https://jupita.io/backend/audio-sdk/websocket)
+1. Download the Jupita Websocket SDK [here](https://jupita.io/backend/audio-sdk/websocket)
 
 1. Place the folder on your local machine and open terminal
 
