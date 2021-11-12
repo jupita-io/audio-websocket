@@ -117,8 +117,6 @@ Note, if using a repository for your project, when cloning, make sure to include
 
 1. NGROK:  brew cask install ngrok
 
-1. Twilio CLI: brew tap twilio/brew && brew install twilio
-
 ## Adding your credentials to your Node.js application
 1. Streams.xml – found under ‘template’ directory, replace * with your Ngrok address in the stream URL. You find your Ngrok address in
 
@@ -131,7 +129,7 @@ Note, if using a repository for your project, when cloning, make sure to include
 ## Troubleshooting
 1. If you are unable to get media transcriptions back in command line, check the path to the Speech to text API is correct in your .env file. Note that the environment variable (.env file) should remain inside the project folder so it may connect with the Google credentials JSON file.
 
-1. If you are unable to connect with your Twilio phone number, check the local Ngrok address is the same as that of the ‘streams.xml’ file inside the template directory in your application.
+1. If you are unable to connect with your phone number, check the local Ngrok address is the same as that of the ‘streams.xml’ file inside the template directory in your application.
 
 1. Make sure to use Google Chrome for testing and downloading Service keys, it won’t work with other browsers.
 
@@ -154,7 +152,7 @@ Note, if using a repository for your project, when cloning, make sure to include
 1. To update Gcloud SDK run ‘Gcloud components update’ in command line.
 
 
-## The Jupita Twilio SDK explained
+## The Jupita Websocket SDK explained
 Two tracks; outbound (touchpoint) + inbound (input)
 
 In the below code snapshot you will see that the media stream handler connection is initiated by calling
@@ -303,7 +301,7 @@ axios.post('https://api.jupita.io/v1/dump', {
 ## Local testing using Ngrok
 To test your application locally you will need to setup your local environment. Start by running the command ‘ngrok http 8080’ in terminal. This will show your local host URL.
 
-Then, copy this URL and place into your streams ‘wss’ URL located in your Media Streams code. Replace App Spot URL with Ngrok URL, don’t forget to reverse when you have completed local testing.
+Then, copy this URL and place into your streams ‘wss’ URL located in the Jupita Websocket SDK code. Replace App Spot URL with Ngrok URL, don’t forget to reverse when you have completed local testing.
 
 ```
 $start = $response->start();
@@ -421,14 +419,12 @@ Custom parameters;
 
 - message_type – This is a Boolean with either value of 0 for inbound and 1 for outbound
 
-When one user calls another user it allocates the parameters as mentioned above and sends this to the Node.js application, this all happens within the Jupita Twilio SDK while parameters are allocated in ‘server.js’ file. All of this is identified with the help of `messageType`.
+When one user calls another user it allocates the parameters as mentioned above and sends this to the Node.js application, this all happens within the Jupita Websocket SDK while parameters are allocated in ‘server.js’ file. All of this is identified with the help of `messageType`.
    
 ## Further notes
 1. The transcription-service.js file contains Google Speech-to-Text implementation and Timestamp implementation. Unless you want to change any frequency of how you receive transcripts or confidence level for speech to text, that must not be changed.
 
-1. The server.js file contains all the logic that connects the Jupita Twilio SDK with Twilio, including separating the streams and posting them to your backend.
-
-1. TWIML file is an option and can be used as an alternate to custom parameters.
+1. The server.js file contains all the logic that connects the Jupita Websocket SDK with the stream, including separating the streams and posting them to your backend.
 
 1. Package.json contains all the dependencies of the project.
 
