@@ -1,10 +1,10 @@
 # Jupita Websocket SDK
 
-Using the Jupita Twilio SDK, you can enable real time audio analytics with your Twilio account. This guide will help you set up the required accounts, implement the provided Jupita Twilio SDK, as well as testing, maintenance & troubleshooting. Note that any speech-to-text API will work, however Google Speech-to-Text has been used for this SDK. 
+Using the Jupita Websocket SDK, you can enable real time audio analytics with your Twilio account. This guide will help you set up the required accounts, implement the provided Jupita Twilio SDK, as well as testing, maintenance & troubleshooting. Note that any speech-to-text API will work, however Google Speech-to-Text has been used for this SDK. 
 
 To get started you will need;
 
-- [The Jupita Twilio SDK](https://jupita.io/backend/audio-sdk/websocket)
+- [The Jupita Websocket SDK](https://jupita.io/backend/audio-sdk/websocket)
 
 - [Your Twilio account](https://www.twilio.com/try-twilio)
 
