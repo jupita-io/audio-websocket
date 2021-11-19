@@ -17,7 +17,7 @@ Multiple streams can be independently transcribed and fed to Jupita via .JSON fo
 
 Simply send your stream to the configured WebSocket in the SDK which runs on a simple App Engine flexible environment. From there, the audio is sent to Google Speech-to-Text, transcribed and sent to Jupita in real-time. The Jupita Websocket SDK handles this entire process end-to-end.
 
-Replace the URL attribute of the <Stream> tag and the phone number contained in the body of the <Dial> tag.
+Replace the URL attribute of the `Stream>` tag and the phone number contained in the body of the `Dial` tag.
 
 ```
 <?xml version="1.0" encoding="UTF-8"?>
@@ -422,7 +422,7 @@ Custom parameters;
 When one user calls another user it allocates the parameters as mentioned above and sends this to the Node.js application, this all happens within the Jupita Websocket SDK while parameters are allocated in ‘server.js’ file. All of this is identified with the help of `messageType`.
    
 ## Further notes
-1. The transcription-service.js file contains Google Speech-to-Text implementation and Timestamp implementation. Unless you want to change any frequency of how you receive transcripts or confidence level for speech to text, that must not be changed.
+1. The transcription-service.js file contains Google Speech-to-Text implementation and timestamp implementation. Unless you want to change any frequency of how you receive transcripts or confidence level for speech to text, that must not be changed.
 
 1. The server.js file contains all the logic that connects the Jupita Websocket SDK with the stream, including separating the streams and posting them to your backend.
 
