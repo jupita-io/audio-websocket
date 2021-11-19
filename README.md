@@ -29,7 +29,7 @@ Replace the URL attribute of the <Stream> tag and the phone number contained in 
 </Response>
 ```
 
-The <Stream> tag starts the audio stream asynchronously and then control moves onto the <Dial> verb. <Dial> will call that number. The audio stream will end when the call is completed.
+The `Stream` tag starts the audio stream asynchronously and then control moves onto the `Dial` verb. `Dial` will call that number. The audio stream will end when the call is completed.
 
 You will also need to setup your .env (environment variable) file – Note that this file must be placed inside your Node.js application folder.
 
