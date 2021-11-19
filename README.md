@@ -17,7 +17,7 @@ Multiple streams can be independently transcribed and fed to Jupita via .JSON fo
 
 Simply send your stream to the configured WebSocket in the SDK which runs on a simple App Engine flexible environment. From there, the audio is sent to Google Speech-to-Text, transcribed and sent to Jupita in real-time. The Jupita Websocket SDK handles this entire process end-to-end.
 
-Replace the URL attribute of the `Stream>` tag and the phone number contained in the body of the `Dial` tag.
+Replace the URL attribute of the `Stream` tag and the phone number contained in the body of the `Dial` tag.
 
 ```
 <?xml version="1.0" encoding="UTF-8"?>
