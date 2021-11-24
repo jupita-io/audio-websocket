@@ -1,21 +1,21 @@
-# Jupita Websocket SDK
+# Jupita WebSocket SDK
 
-Using the Jupita Websocket SDK you can enable real time audio analytics with any audio received via a Websocket packet. This guide will help you set up the required accounts, implement the provided Jupita Websocket SDK, as well as testing, maintenance & troubleshooting. Note that any speech-to-text API will work, however Google Speech-to-Text has been used for this SDK. 
+Using the Jupita WebSocket SDK you can enable real time audio analytics with any audio received via a WebSocket packet. This guide will help you set up the required accounts, implement the provided Jupita WebSocket SDK, as well as testing, maintenance & troubleshooting. Note that any speech-to-text API will work, however Google Speech-to-Text has been used for this SDK. 
 
 To get started you will need;
 
-- [The Jupita Websocket SDK](https://jupita.io/backend/audio-sdk/websocket)
+- [The Jupita WebSocket SDK](https://jupita.io/backend/audio-sdk/websocket)
 
 - [A free Google Cloud Platform account](https://cloud.google.com/)
 
 - [Ngrok](https://ngrok.com/)
 
 ## Getting started
-The Jupita Websocket SDK captures raw audio streams which can be forked via Google Speech-to-Text to Jupita. When the transcriptions are received Jupita will apply timestamps to create the utterances in the order in which they occurred. There is a timestamp in each payload that increments from the time the stream starts. 
+The Jupita WebSocket SDK captures raw audio streams which can be forked via Google Speech-to-Text to Jupita. When the transcriptions are received Jupita will apply timestamps to create the utterances in the order in which they occurred. There is a timestamp in each payload that increments from the time the stream starts. 
 
-Multiple streams can be independently transcribed and fed to Jupita via .JSON format. All of this happens in real time during the audio. The Jupita Websocket SDK can stream audio to and from any call made either to a phone, SIP, or any websocket endpoint that can accept and send base64 encoded audio.
+Multiple streams can be independently transcribed and fed to Jupita via .JSON format. All of this happens in real time during the audio. The Jupita WebSocket SDK can stream audio to and from any call made either to a phone, SIP, or any WebSocket endpoint that can accept and send base64 encoded audio.
 
-Simply send your stream to the configured WebSocket in the SDK which runs on a simple App Engine flexible environment. From there, the audio is sent to Google Speech-to-Text, transcribed and sent to Jupita in real-time. The Jupita Websocket SDK handles this entire process end-to-end.
+Simply send your stream to the configured WebSocket in the SDK which runs on a simple App Engine flexible environment. From there, the audio is sent to Google Speech-to-Text, transcribed and sent to Jupita in real-time. The Jupita WebSocket SDK handles this entire process end-to-end.
 
 Replace the URL attribute of the `Stream` tag and the phone number contained in the body of the `Dial` tag.
 
@@ -45,10 +45,10 @@ Create a service account for your App Engine flexible environment to utilize whe
 `Gcloud compute firewall-rules create default-allow-websockets-8080 --allow tcp:8080 --target-tags WebSocket --description "Allow WebSocket traffic on port 8080"`
 
 ## App spot
-You will also require a URL from your selected hosting platform - such as GCP’s ‘App engine’ and apply that URL into your post request in the Jupita Websocket SDK file ‘server.js’. This template is already setup in the Jupita Websocket SDK. 
+You will also require a URL from your selected hosting platform - such as GCP’s ‘App engine’ and apply that URL into your post request in the Jupita WebSocket SDK file ‘server.js’. This template is already setup in the Jupita WebSocket SDK. 
 
 ## App Engine flexible environment setup
-Take the service account JSON key you downloaded earlier, rename it to ‘google_creds.json’ and replace the same named file in the Jupita Websocket SDK with this file. 
+Take the service account JSON key you downloaded earlier, rename it to ‘google_creds.json’ and replace the same named file in the Jupita WebSocket SDK with this file. 
 
 Your ‘app.yaml’ file will look similar to the following (you will need to configure the variables of your app engine to suit your projects requirements);
 
@@ -80,9 +80,9 @@ Additional Google Cloud Platform links –
 
 - [References](https://cloud.google.com/speech-to-text/docs/reference/rpc/google.cloud.speech.v1/)
 
-## Deploying the Jupita Websocket SDK
+## Deploying the Jupita WebSocket SDK
 
-1. Download the Jupita Websocket SDK [here](https://jupita.io/backend/audio-sdk/websocket)
+1. Download the Jupita WebSocket SDK [here](https://jupita.io/backend/audio-sdk/websocket)
 
 1. Place the folder on your local machine and open terminal
 
@@ -152,7 +152,7 @@ Note, if using a repository for your project, when cloning, make sure to include
 1. To update Gcloud SDK run ‘Gcloud components update’ in command line.
 
 
-## The Jupita Websocket SDK explained
+## The Jupita WebSocket SDK explained
 Two tracks; outbound (touchpoint) + inbound (input)
 
 In the below code snapshot you will see that the media stream handler connection is initiated by calling
@@ -335,7 +335,7 @@ In order to do this, navigate to the line of code `// log('Touchpoint : ${this.t
 
 1. Beautify
 
-## List of NPM Packages used within the Jupita Twilio SDK - 
+## List of NPM Packages used within the Jupita WebSocket SDK - 
 1. dotenv
 
 1. @google-cloud/speech
@@ -419,12 +419,12 @@ Custom parameters;
 
 - message_type – This is a Boolean with either value of 0 for inbound and 1 for outbound
 
-When one user calls another user it allocates the parameters as mentioned above and sends this to the Node.js application, this all happens within the Jupita Websocket SDK while parameters are allocated in ‘server.js’ file. All of this is identified with the help of `messageType`.
+When one user calls another user it allocates the parameters as mentioned above and sends this to the Node.js application, this all happens within the Jupita WebSocket SDK while parameters are allocated in ‘server.js’ file. All of this is identified with the help of `messageType`.
    
 ## Further notes
 1. The transcription-service.js file contains Google Speech-to-Text implementation and timestamp implementation. Unless you want to change any frequency of how you receive transcripts or confidence level for speech to text, that must not be changed.
 
-1. The server.js file contains all the logic that connects the Jupita Websocket SDK with the stream, including separating the streams and posting them to your backend.
+1. The server.js file contains all the logic that connects the Jupita WebSocket SDK with the stream, including separating the streams and posting them to your backend.
 
 1. Package.json contains all the dependencies of the project.
 
