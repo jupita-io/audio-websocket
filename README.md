@@ -1,6 +1,6 @@
 # Jupita WebSocket SDK
 
-Using the Jupita WebSocket SDK you can enable real time audio analytics with any audio received via a WebSocket packet. This guide will help you set up the required accounts, implement the provided Jupita WebSocket SDK, as well as testing, maintenance & troubleshooting. Note that any speech-to-text API will work, however Google Speech-to-Text has been used for this SDK. 
+Using the Jupita WebSocket SDK you can enable real time audio analytics with any base64 encoded audio received via WebSocket. This guide will help you set up the required accounts, implement the provided Jupita WebSocket SDK, as well as testing, maintenance & troubleshooting. Note that any speech-to-text API will work, however Google Speech-to-Text has been used for this SDK.
 
 To get started you will need;
 
@@ -11,7 +11,7 @@ To get started you will need;
 - [Ngrok](https://ngrok.com/)
 
 ## Getting started
-The Jupita WebSocket SDK captures raw audio streams which can be forked via Google Speech-to-Text to Jupita. When the transcriptions are received Jupita will apply timestamps to create the utterances in the order in which they occurred. There is a timestamp in each payload that increments from the time the stream starts. 
+The Jupita WebSocket SDK captures raw base64 audio streams which can be forked via Google Speech-to-Text to Jupita. When the transcriptions are received Jupita will apply timestamps to create the utterances in the order in which they occurred. There is a timestamp in each payload that increments from the time the stream starts. 
 
 Multiple streams can be independently transcribed and fed to Jupita via .JSON format. All of this happens in real time during the audio. The Jupita WebSocket SDK can stream audio to and from any call made either to a phone, SIP, or any WebSocket endpoint that can accept and send base64 encoded audio.
 
