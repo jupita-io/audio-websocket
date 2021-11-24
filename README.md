@@ -80,6 +80,8 @@ Additional Google Cloud Platform links –
 
 - [References](https://cloud.google.com/speech-to-text/docs/reference/rpc/google.cloud.speech.v1/)
 
+- [Base64 encoding audio content](https://cloud.google.com/speech-to-text/docs/base64-encoding)
+
 ## Deploying the Jupita WebSocket SDK
 
 1. Download the Jupita WebSocket SDK [here](https://jupita.io/backend/audio-sdk/websocket)
