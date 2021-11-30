@@ -11,7 +11,7 @@ To get started you will need;
 - [Ngrok](https://ngrok.com/)
 
 ## Getting started
-The Jupita WebSocket SDK captures raw base64 audio streams which can be forked via Google Speech-to-Text to Jupita. When the transcriptions are received Jupita will apply timestamps to create the utterances in the order in which they occurred. There is a timestamp in each payload that increments from the time the stream starts. 
+The Jupita WebSocket SDK captures raw base64 audio streams which are then sent via Google Speech-to-Text to Jupita. When the transcriptions are received Jupita will apply timestamps to create the utterances in the order in which they occurred. There is a timestamp in each payload that increments from the time the stream starts. 
 
 Multiple streams can be independently transcribed and fed to Jupita via .JSON format. All of this happens in real time during the audio. The Jupita WebSocket SDK can stream audio to and from any call made either to a phone, SIP, or any WebSocket endpoint that can accept and send base64 encoded audio.
 
