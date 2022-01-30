@@ -157,6 +157,8 @@ Note, if using a repository for your project, when cloning, make sure to include
 ## The Jupita WebSocket SDK explained
 Two tracks; outbound (touchpoint) + inbound (input)
 
+Within the dashboard UI touchpoints are referred to as 'channels', and inputs are referred to as 'customers'.
+
 In the below code snapshot you will see that the media stream handler connection is initiated by calling
 ‘connection.on’
 
