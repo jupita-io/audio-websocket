@@ -155,9 +155,17 @@ Note, if using a repository for your project, when cloning, make sure to include
 
 
 ## The Jupita WebSocket SDK explained
-Two tracks; outbound (touchpoint) + inbound (input)
+Jupita is an API product that provides omnichannel communications analytics. Within the SDK documentation `message_type` refers to which user the utterance is from. `message_type` 0 = `TOUCHPOINT` and `message_type` 1 = `INPUT`, although these labels are handled by the SDK.
 
 Within the dashboard UI touchpoints are referred to as 'channels', and inputs are referred to as 'customers'.
+
+The required parameters for the APIs include setting `message_type` along with assigning a `touchpoint_id` + `input_id` to be passed. Please note when assigning the `touchpoint_id` that no data will be available for that particular touchpoint until the touchpoint has sent at least 1 utterance via the `dump` API. 
+
+You can set any `TOUCHPOINT` or `INPUT` ID format within the confines of JSON. How this is structured or deployed is completely customisable, for example, you may wish to use full names for users from your database, or you may wish to apply sequencing numbers for `INPUT` users where the user is not known. 
+
+`TOUCHPOINT` & `INPUT` IDs must be unique to that user. It is recommended to utilise recognisable labels when creating `touchpoint_id`'s as this will make it easier to identify channels within the dashboard UI, e.g. 'John Smith', 'Jane Doe', 'Twitter Feed', etc.
+
+Two tracks; outbound (touchpoint) + inbound (input)
 
 In the below code snapshot you will see that the media stream handler connection is initiated by calling
 ‘connection.on’
