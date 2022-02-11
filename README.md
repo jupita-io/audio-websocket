@@ -163,7 +163,7 @@ The required parameters for the APIs include setting `messageType` along with as
 
 You can set any `touchpoint` or `input` ID format within the confines of JSON. How this is structured or deployed is completely customisable, for example, you may wish to use full names for users from your database, or you may wish to apply sequencing numbers for `input` users where the user is not known. 
 
-`touchpoint` & `input` IDs must be unique to that user. It is recommended to utilise recognisable labels when creating `touchpointID`'s as this will make it easier to identify channels within the dashboard UI, e.g. 'John Smith', 'Jane Doe', 'Twitter Feed', etc.
+`touchpoint` & `input` IDs must be unique to that user. It is recommended to utilise recognisable labels when creating `touchpointID`'s as this will make it easier to identify channels within the dashboard UI, e.g. 'John Smith', 'Jane Doe', etc.
 
 Two tracks; outbound (touchpoint) + inbound (input)
 
