@@ -66,7 +66,6 @@ class MediaStreamHandler {
         var messageType = 1;
         
         
-        
 
         
         
@@ -99,6 +98,7 @@ class MediaStreamHandler {
                      "message_type": String(messageType),
                      "text": transcription,
                      "isCall" : true,
+                     "channel_type" : String("Phone"),
                      "timestamp": log()
             
       })
