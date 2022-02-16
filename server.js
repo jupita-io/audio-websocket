@@ -98,7 +98,7 @@ class MediaStreamHandler {
                      "message_type": String(messageType),
                      "text": transcription,
                      "isCall": true,
-                     "channel_type": String("Phone"),
+                     "channel_type": "Phone",
                      "timestamp": log()
             
       })
