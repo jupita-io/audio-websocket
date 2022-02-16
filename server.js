@@ -97,8 +97,8 @@ class MediaStreamHandler {
                      "touchpoint_id": this.touchpointID,
                      "message_type": String(messageType),
                      "text": transcription,
-                     "isCall" : true,
-                     "channel_type" : String("Phone"),
+                     "isCall": true,
+                     "channel_type": String("Phone"),
                      "timestamp": log()
             
       })
