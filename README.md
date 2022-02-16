@@ -159,7 +159,7 @@ Jupita is an API product that provides omnichannel communications analytics. Wit
 
 Within the dashboard UI touchpoints are referred to as 'channels', and inputs are referred to as 'customers'.
 
-The required parameters for the APIs include setting `messageType` along with assigning a `touchpointID` + `inputID` to be passed. Please note when assigning the `touchpointID` that no data will be available for that particular touchpoint until the touchpoint has sent at least 1 utterance via the `dump` API. 
+The required parameters for the APIs include setting `channelType`, `messageType` along with assigning a `touchpointID` + `inputID` to be passed. Please note when assigning the `touchpointID` that no data will be available for that particular touchpoint until the touchpoint has sent at least 1 utterance via the `dump` API. 
 
 You can set any `touchpoint` or `input` ID format within the confines of JSON. How this is structured or deployed is completely customisable, for example, you may wish to use full names for users from your database, or you may wish to apply sequencing numbers for `input` users where the user is not known. 
 
@@ -271,17 +271,19 @@ This is the post request, it also adds timestamps automatically. The last snippe
 ```
 axios.post('https://api.jupita.io/v1/dump', {
 
-                  "input_id":this.inputID,
+                  "input_id": this.inputID,
 
-                  "touchpoint_id":this.touchpointID,
+                  "touchpoint_id": this.touchpointID,
 
-                  "message_type":String(messageType),
+                  "message_type": String(messageType),
 
-                  "text":transcription,
+                  "text": transcription,
 
-                  "isCall" :true,
+                  "isCall": true,
 
-                  "timestamp":log()
+                  "channel_type": String("Phone"),
+
+                  "timestamp": log()
 
       })
 
@@ -391,6 +393,8 @@ Parameters
 
 - “message_type” “0" for touchpoint or “1” for input (this is to inform Jupita who is speaking)
 
+- "channel_type" Labels the communications channel, currently set as 'Phone'
+
 - “text” e.g. “Hello world”
 
 ```
@@ -404,7 +408,9 @@ axios.post('https://api.jupita.io/v1/dump', {
 
                   "text": transcription,
 
-                  "isCall" : true,
+                  "isCall": true,
+
+                  "channel_type": String("Phone"),
 
                   "timestamp": log()
 
@@ -430,6 +436,8 @@ Custom parameters;
 - input – user 2
 
 - message_type – This is a Boolean with either value of 0 for inbound and 1 for outbound
+
+- channel_type - This is a required String.
 
 When one user calls another user it allocates the parameters as mentioned above and sends this to the Node.js application, this all happens within the Jupita WebSocket SDK while parameters are allocated in ‘server.js’ file. All of this is identified with the help of `messageType`.
    
