@@ -155,7 +155,7 @@ Note, if using a repository for your project, when cloning, make sure to include
 
 
 ## The Jupita WebSocket SDK explained
-Jupita is an API product that provides omnichannel communications analytics. Within the SDK documentation `messageType` refers to which user the utterance is from. `messageType` 0 = `touchpoint` and `messageType` 1 = `input`, although these labels are handled by the SDK.
+Jupita is an API product that provides omnichannel communications analytics using OAuth 2.0 authorisation. Within the SDK documentation `messageType` refers to which user the utterance is from. `messageType` 0 = `touchpoint` and `messageType` 1 = `input`, although these labels are handled by the SDK.
 
 Within the dashboard UI touchpoints are referred to as 'channels', and inputs are referred to as 'customers'.
 
